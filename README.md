@@ -1,4 +1,4 @@
-Тестовое задание для NewGen Vision
+#### Тестовое задание для NewGen Vision
 
 Базовое решение:
 
@@ -43,7 +43,6 @@ function sortCoursesByMinPrice(courses, ascending) {
 
 </details>
 
------
 <details>
   <summary>Требование:</summary>
 
