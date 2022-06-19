@@ -4,6 +4,32 @@
 
 Фильтрация:
 
+```javascript
+function filterCoursesByPriceRange(courses, min, max) {
+  const nullToInfinity = value => value === null ? Infinity : value;
+  return courses.filter(item => {
+    return item.prices[0] <= nullToInfinity(max) && nullToInfinity(item.prices[1]) >= min;
+  })
+}
+```
+
+Сортировка:
+
+```javascript
+function sortCoursesByMinPrice(courses, ascending) {
+  if (ascending === null) return courses;
+
+  return courses.slice().sort((a, b) => {
+    return (a.prices[0] - b.prices[0]) * (ascending || -1);
+  })
+}
+```
+
+**Дополнительно был реализован фронтенд на vue для этого функционала**
+
+<details>
+  <summary>Описание алгоритма фильтрации:</summary>
+
 Функция принимает массив из наборов курсов с минимальными и максимальными ценами в каждом наборе, и аргументы min и max задающие диапазон цен выбранных пользователем (включительно). Для включения набора курсов в результат - нужно чтобы хоть один курс из набора входил в указанный пользователем диапазон. Значит достаточно проверить, что
 
 (минимальная цена набора курсов) <= max ИЛИ (максимальная цена набора курсов) >= min
@@ -32,28 +58,9 @@ max = 1
 
 (500 <= 1 И Infinity >= 0) вернет false
 
-```javascript
-function filterCoursesByPriceRange(courses, min, max) {
-  const nullToInfinity = value => value === null ? Infinity : value;
-  return courses.filter(item => {
-    return item.prices[0] <= nullToInfinity(max) && nullToInfinity(item.prices[1]) >= min;
-  })
-}
-```
+Таким образом, итоговый алгоритм производит сравнение границ диапазонов, предварительно заменив null для верхних границ на Infinity.
 
-Сортировка:
-
-```javascript
-function sortCoursesByMinPrice(courses, ascending) {
-  if (ascending === null) return courses;
-
-  return courses.slice().sort((a, b) => {
-    return (a.prices[0] - b.prices[0]) * (ascending || -1);
-  })
-}
-```
-
-**Дополнительно был реализован фронтенд на vue для этого функционала**
+</details>
 
 <details>
   <summary>Условие задачи:</summary>
@@ -103,6 +110,3 @@ function sortCoursesByMinPrice(courses, ascending) {
 
 Дополнительно, вы также можете реализовать алгоритм сортировки курсов по цене.
 </details>
-
-
-
