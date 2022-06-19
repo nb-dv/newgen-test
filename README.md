@@ -27,6 +27,8 @@ function sortCoursesByMinPrice(courses, ascending) {
 
 **Дополнительно был реализован фронтенд на vue для этого функционала**
 
+https://nb-dv.github.io/newgen-test/
+
 <details>
   <summary>Описание алгоритма фильтрации:</summary>
 
